@@ -1,0 +1,64 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.12.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="Cintia Mendiberry (generated)" id="1658921424622-1">
+        <createTable tableName="AppSettings">
+            <column computed="false" name="AppSettingID" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column computed="false" name="PageSize" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Cintia Mendiberry (generated)" id="1658921424622-2">
+        <createTable remarks="Current version number of the AdventureWorksLT 2012 sample database." tableName="BuildVersion">
+            <column autoIncrement="true" computed="false" name="SystemInformationID" remarks="Primary key for BuildVersion records." type="tinyint">
+                <constraints nullable="false"/>
+            </column>
+            <column computed="false" name="Database Version" remarks="Version number of the database in 9.yy.mm.dd.00 format." type="nvarchar(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column computed="false" name="VersionDate" remarks="Date and time the record was last updated." type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column computed="false" defaultValueComputed="getdate()" defaultValueConstraintName="DF_BuildVersion_ModifiedDate" name="ModifiedDate" remarks="Date and time the record was last updated." type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="Cintia Mendiberry (generated)" id="1658921424622-3">
+        <createTable tableName="department1234">
+            <column computed="false" name="id" type="int">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_DEPARTMENT1234"/>
+            </column>
+            <column computed="false" name="firstname" type="varchar(50)"/>
+            <column computed="false" name="lastname" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column computed="false" defaultValueComputed="'true'" defaultValueConstraintName="DF_department1234_active" name="active" type="bit"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="Cintia Mendiberry (generated)" id="1658921424622-4">
+        <createTable remarks="Audit table tracking errors in the the AdventureWorks database that are caught by the CATCH block of a TRY...CATCH construct. Data is inserted by stored procedure dbo.uspLogError when it is executed from inside the CATCH block of a TRY...CATCH construct." tableName="ErrorLog">
+            <column autoIncrement="true" computed="false" name="ErrorLogID" remarks="Primary key for ErrorLog records." type="int">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_ErrorLog_ErrorLogID"/>
+            </column>
+            <column computed="false" defaultValueComputed="getdate()" defaultValueConstraintName="DF_ErrorLog_ErrorTime" name="ErrorTime" remarks="The date and time at which the error occurred." type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column computed="false" name="UserName" remarks="The user who executed the batch in which the error occurred." type="sysname">
+                <constraints nullable="false"/>
+            </column>
+            <column computed="false" name="ErrorNumber" remarks="The error number of the error that occurred." type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column computed="false" name="ErrorSeverity" remarks="The severity of the error that occurred." type="int"/>
+            <column computed="false" name="ErrorState" remarks="The state number of the error that occurred." type="int"/>
+            <column computed="false" name="ErrorProcedure" remarks="The name of the stored procedure or trigger where the error occurred." type="nvarchar(126)"/>
+            <column computed="false" name="ErrorLine" remarks="The line number at which the error occurred." type="int"/>
+            <column computed="false" name="ErrorMessage" remarks="The message text of the error that occurred." type="nvarchar(4000)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
